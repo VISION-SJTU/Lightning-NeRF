@@ -13,7 +13,7 @@ TO BE DONE
 
 ### Introduction
 
-This repository provides code to integrate the Lightning NeRF into [NeRFStudio](https://docs.nerf.studio/en/latest). Lightning NeRF is an efficient novel view synthesis framework for outdoor scenes that integrates point clouds and images.
+This repository provides code to integrate the Lightning NeRF into [NeRFStudio](https://github.com/nerfstudio-project/nerfstudio/). Lightning NeRF is an efficient novel view synthesis framework for outdoor scenes that integrates point clouds and images.
 
 ### Dependencies
 - [PyTorch](https://pytorch.org/get-started/previous-versions) 1.13.1
