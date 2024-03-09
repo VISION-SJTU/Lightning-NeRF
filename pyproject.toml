@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+authors = [
+    {name = "Junyi Cao"},
+]
+name = "lightning_nerf"
+description = "Lightning-NeRF nerfstudio integration"
+readme = "README.md"
+license = {text = "BSD 3-Clause"}
+dependencies=[
+    "nerfstudio==0.2.2"
+]
+dynamic = ["version"]
+
+[project.entry-points."nerfstudio.method_configs"]
+lightning_nerf = "lightning_nerf.config:lightning_nerf_method"
+
+[tool.setuptools]
+include-package-data = true
+packages = [
+    "lightning_nerf"
+]
+
+[tool.setuptools.dynamic]
+version = { attr = "lightning_nerf.__version__" }
