@@ -35,7 +35,9 @@ This repository provides code to integrate the Lightning NeRF into [NeRFStudio](
     ```
 
 ### Data
-0. **Use our data pack.** You may skip the following steps 1 and 2 by downloading the data pack used in our experiments. We will provide the download link soon.
+0. **Use our data pack.** You may skip the following steps 1 and 2 by downloading the data pack used in our experiments. 
+    - [Download link](https://sjtueducn-my.sharepoint.com/:f:/g/personal/junyicao_sjtu_edu_cn/EjVxCRCWR_BOqMHqwLnt6w4BlHYhOQviOZWDAnF221dEJQ).
+    - Password: `)!4gkJTo`.
 1. **Download source data.** We use [KITTI-360](https://www.cvlibs.net/datasets/kitti-360/index.php) and [Argoverse2 (Sensor Dataset)](https://argoverse.github.io/user-guide/datasets/sensor.html) for experiments. Please download the original data from the offical webpages. Here, we list the chosen scenes presented in our paper.
 
 <div align=center>
