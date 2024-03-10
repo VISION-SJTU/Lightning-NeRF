@@ -58,7 +58,7 @@ This repository provides code to integrate the Lightning NeRF into [NeRFStudio](
 
 2. **Preprocess the data.** You need to extract camera poses, RGB images, and LiDAR pointcloud from the original data. 
 
-3. **Implement the dataparser.** You need to create the corresponding `dataparser` script for loading the datasets in NeRFStudio. If you would like to use our dataparsers, you may download the scripts from:
+3. **Implement the dataparser.** You need to create the corresponding `dataparser` script for loading the datasets in NeRFStudio. If you would like to use our dataparsers, you may download the scripts via the link below.
     - [Download link](https://sjtueducn-my.sharepoint.com/:f:/g/personal/junyicao_sjtu_edu_cn/Eq2UpGHPvmRMlXQolta2-SUBeCG9UN4urTZgtMzs0SxB1g?e=YHNg3G).
     - Password: `_8Q9+EJc`.
 
