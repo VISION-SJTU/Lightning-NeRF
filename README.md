@@ -6,7 +6,12 @@
 
 **Please consider citing our paper if you find it interesting or helpful to your research.**
 ```
-TO BE DONE
+@article{cao2024lightning,
+  title={{Lightning NeRF}: Efficient Hybrid Scene Representation for Autonomous Driving},
+  author={Cao, Junyi and Li, Zhichao and Wang, Naiyan and Ma, Chao},
+  journal={arXiv preprint arXiv:2403.05907},
+  year={2024}
+}
 ```
 
 ---
