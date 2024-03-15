@@ -26,9 +26,9 @@ from nerfstudio.engine.callbacks import (
 from nerfstudio.field_components.field_heads import FieldHeadNames
 from nerfstudio.model_components.scene_colliders import NearFarCollider
 from nerfstudio.models.base_model import Model, ModelConfig
-from nerfstudio.utils import colormaps, meters, misc
+from nerfstudio.utils import colormaps, misc
 
-from .utils import FocalLoss
+from .utils import FocalLoss, AverageMeter
 from .field import LightningField
 from .sampler import LightningNeRFSampler
 
@@ -260,7 +260,7 @@ class LightningNeRFModel(Model):
         CONSOLE.log(vertices_fg[:,2].min(), vertices_fg[:,2].max())
         
         # Initialize density field given the pointcloud
-        loss_meter = meters.AverageMeter()
+        loss_meter = AverageMeter()
         optimizer = torch.optim.Adam(self.field.density_encoding.parameters(), lr=0.2)
         
         CONSOLE.log(f'[blue]Pretraining density grid (FG) ...')

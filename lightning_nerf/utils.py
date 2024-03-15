@@ -2,7 +2,9 @@ import torch
 import torch.nn as nn
 from typing_extensions import Literal
 
-from nerfstudio.model_components.losses import MSELoss, L1Loss, SmoothL1Loss
+from nerfstudio.model_components.losses import MSELoss, L1Loss
+
+SmoothL1Loss = nn.SmoothL1Loss
 
 
 class FocalLoss(nn.Module):
@@ -26,3 +28,23 @@ class FocalLoss(nn.Module):
         weight = torch.nan_to_num(weight, nan=0.0)
         weight = torch.clamp(weight, min=1.0, max=10.0)
         return torch.mean(weight * error)
+
+
+class AverageMeter(object):
+    def __init__(self):
+        self.val = 0
+        self.avg = 0
+        self.sum = 0
+        self.count = 0
+
+    def reset(self):
+        self.val = 0
+        self.avg = 0
+        self.sum = 0
+        self.count = 0
+
+    def update(self, val, n=1):
+        self.val = val
+        self.sum += val * n
+        self.count += n
+        self.avg = self.sum / self.count
