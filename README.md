@@ -115,6 +115,15 @@ ns-train lightning_nerf \
 
 You can run `ns-train lightning_nerf --help` to see detailed information of optional arguments.
 
+**Note:** Since NeRFStudio attempts to load all training images to cuda device before training starts, it may occupy a large memory. If OOM is occured, you may consider load a subset of training images once a time by including:
+```bash
+    ...
+    --pipeline.datamanager.train-num-images-to-sample-from 128 \
+    --pipeline.datamanager.train-num-times-to-repeat-images 256 \
+    ...
+``` 
+in the training script. 
+
 ### Evaluation
 To evaluate a model, run the following command in the console:
 ```bash
@@ -122,6 +131,8 @@ ns-eval --load-config=${PATH_TO_CONFIG} --output-path=${PATH_TO_RESULT}.json
 ```
 
 **Note:** There are differences in the calculation of `SSIM` across NeRF variants. We by default adopt the NeRFStuidio version (i.e., implementation from `torchmetrics`) in our experiments. However, in Table 1 of the manuscript, some results are cited from [DNMP](https://arxiv.org/abs/2307.10776). For fairness, we adopt the DNMP version (i.e., implementation from `skimage`) for comparing `SSIM` in this table. See the discussion [here](https://github.com/DNMP/DNMP/issues/16) for details.
+
+**Note:** The center camera from [Argoverse2 (Sensor Dataset)](https://argoverse.github.io/user-guide/datasets/sensor.html) captures the hood of the self-driving vehicle, which should be masked for NeRF's training pipeline. In our data pack, we simply create a mask with the same shape for each input image with the bottom 250 rows set to `0` and other places to `1`. The masks are used [here](https://github.com/nerfstudio-project/nerfstudio/blob/ad706f59c414bd7e0f62b78a6a5822e2de70b6b9/nerfstudio/data/pixel_samplers.py#L64-L67) in NeRFStudio during training. For the evaluation of this dataset, we first *crop* the ground-truth and predicted images by removing the bottom 250 rows and then calculate the corresponding metrics.
 
 ### More
 Since Lightning NeRF is integrated into the NeRFStudio project, you may refer to [docs.nerf.studio](https://docs.nerf.studio/) for more functional supports.
