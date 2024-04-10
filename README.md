@@ -27,8 +27,11 @@ We have provided a supplementary video that includes additional novel view synth
 - [PyTorch](https://pytorch.org/get-started/previous-versions) 1.13.1
 - [NeRFAcc](https://github.com/KAIR-BAIR/nerfacc) 0.5.2
 - [Tiny CUDA Neural Networks](https://github.com/NVlabs/tiny-cuda-nn)
-- [nr3d_lib](https://github.com/PJLab-ADG/nr3d_lib) 0.3.1
+- [nr3d_lib](https://github.com/PJLab-ADG/nr3d_lib) 0.3.1 (commit: `e4eba51`) [^1]
 - [NeRFStudio](https://github.com/nerfstudio-project/nerfstudio) 0.2.2
+
+
+[^1]: If you use the version 0.6.0, you may need to modify the code in `Lightning-NeRF/lightning_nerf/sampler.py`. See discussion [here](https://github.com/VISION-SJTU/Lightning-NeRF/issues/2).
 
 ### Installation
 0. Make sure the dependencies are resolved.
