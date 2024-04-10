@@ -295,4 +295,4 @@ class LightningField(Field):
         if self.rgb_padding is not None:
             rgb = rgb * (1 + 2 * self.rgb_padding) - self.rgb_padding
         
-        return {FieldHeadNames.RGB: rgb, "vd_rgb": vd_rgb}
+        return {FieldHeadNames.RGB: rgb, "res_rgb": vd_rgb}
