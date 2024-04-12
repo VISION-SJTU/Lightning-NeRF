@@ -67,16 +67,62 @@ We have provided a supplementary video that includes additional novel view synth
 
 </div>
 
-2. **Preprocess the data.** You need to extract camera poses, RGB images, and LiDAR pointcloud from the original data. 
+2. **Preprocess the data.** You need to extract camera poses, RGB images, and LiDAR pointcloud from the original data. We've provided the [code](https://drive.google.com/file/d/1FvDp_AyugRIMvIzrN7_JaEdq3eMVkjb6/view?usp=sharing) for preprocessing Argoverse2[^2].
 3. **Implement the dataparser.** You need to create the corresponding `dataparser` script for loading the datasets in NeRFStudio. If you would like to use our dataparsers, you may download the scripts via the link below.
     - [Download link](https://sjtueducn-my.sharepoint.com/:f:/g/personal/junyicao_sjtu_edu_cn/Eq2UpGHPvmRMlXQolta2-SUBeCG9UN4urTZgtMzs0SxB1g?e=YHNg3G).
     - Password: `_8Q9+EJc`.
 
-
+[^2]: When calculating the foreground region (aabb) from Argoverse2's camera information, we clip the height (z-axis) of the view frustums to have a minimum value of -5m in the world coordinate to avoid wasting much space on underground areas.
 
 ### Training
 
 To train the model with default parameters, run the following command in the console:
+
+<details>
+<summary>On KITTI-360</summary>
+
+```bash
+ns-train lightning_nerf \
+    --mixed-precision True \
+    --pipeline.model.point-cloud-path path/to/pcd.ply \
+    --pipeline.model.frontal-axis x \
+    --pipeline.model.init-density-value 10.0 \
+    --pipeline.model.density-grid-base-res 256 \
+    --pipeline.model.density-log2-hashmap-size 24 \
+    --pipeline.model.bg-density-grid-res 32 \
+    --pipeline.model.bg-density-log2-hashmap-size 18 \
+    --pipeline.model.near-plane 0.01 \
+    --pipeline.model.far-plane 6.0 \
+    --pipeline.model.vi-mlp-num-layers 3 \
+    --pipeline.model.vi-mlp-hidden-size 64 \
+    --pipeline.model.vd-mlp-num-layers 2 \
+    --pipeline.model.vd-mlp-hidden-size 32 \
+    --pipeline.model.color-grid-base-res 128 \
+    --pipeline.model.color-grid-max-res 2048 \
+    --pipeline.model.color-grid-fpl 2 \
+    --pipeline.model.color-grid-num-levels 8 \
+    --pipeline.model.bg-color-grid-base-res 32 \
+    --pipeline.model.bg-color-grid-max-res 128 \
+    --pipeline.model.bg-color-log2-hashmap-size 16 \
+    --pipeline.model.alpha-thre 0.01 \
+    --pipeline.model.occ-grid-base-res 256 \
+    --pipeline.model.occ-grid-num-levels 2 \
+    --pipeline.model.occ-num-samples-per-ray 750 \
+    --pipeline.model.occ-grid-update-warmup-step 256 \
+    --pipeline.model.pdf-num-samples-per-ray 8 \
+    --pipeline.model.pdf-samples-warmup-step 100000 \
+    --pipeline.model.pdf-samples-fixed-step 100000 \
+    --pipeline.model.pdf-samples-fixed-ratio 0.5 \
+    --pipeline.model.appearance-embedding-dim 0 \
+    ${dataparser_name} \
+    --data <data-folder> \
+    --orientation-method none
+```
+
+</details>
+
+<details>
+<summary>On Argoverse2</summary>
 
 ```bash
 ns-train lightning_nerf \
@@ -115,6 +161,8 @@ ns-train lightning_nerf \
     --data <data-folder> \
     --orientation-method none
 ```
+
+</details>
 
 You can run `ns-train lightning_nerf --help` to see detailed information of optional arguments.
 
