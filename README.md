@@ -54,13 +54,13 @@ We have provided a supplementary video that includes additional novel view synth
 <div align=center>
 
 <img 
-    src="https://s1.locimg.com/2023/09/22/0af88b2bd34b7.png" 
+    src="https://1drv.ms/i/c/3f1ccc11f481c100/IQMkaCwAAq6IR4DUQNMjZvXMAemjmqbxYpz4jjc6TTeHuRI?width=1024" 
     title="KITTI-360"
     alter="KITTI-360" 
     width="400px">
 
 <img 
-    src="https://s1.locimg.com/2023/09/22/8b05a58c1ff77.png" 
+    src="https://1drv.ms/i/c/3f1ccc11f481c100/IQOZA8Pnky2PQaiQaf8p9RLGAUFVsZNTepRAyznbtlp_1j0?width=1024" 
     title="Argoverse2"
     alter="Argoverse2" 
     width="400px">
